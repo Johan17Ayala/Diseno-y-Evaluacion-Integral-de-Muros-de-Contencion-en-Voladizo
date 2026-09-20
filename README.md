@@ -132,8 +132,10 @@ source venv/bin/activate
 pip install numpy matplotlib
 ```
 
-### Paso 5: Añadir el archivo de diseño
-Asegúrate de tener el archivo **`diseno_muro.py`** en la misma carpeta donde reside `sections.py`.
+### Paso 5: Descargar el archivo de diseño `diseno_muro.py`
+Descarga el script de diseño y evaluación dentro de la misma carpeta donde reside `sections.py`:
+```bash
+wget https://raw.githubusercontent.com/Johan17Ayala/Diseno-y-Evaluacion-Integral-de-Muros-de-Contencion-en-Voladizo/main/diseno_muro.py
 
 ---
 
