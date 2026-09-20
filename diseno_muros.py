@@ -1,11 +1,5 @@
 # =========================================================================================
-# UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS
-# FACULTAD DE INGENIERÍA - INGENIERÍA CIVIL
-# PROGRAMACIÓN II / GEOTECNIA / ESTRUCTURAS
-#
 # PROGRAMA: DISEÑO Y EVALUACIÓN DE MUROS DE CONTENCIÓN EN VOLADIZO
-# Motor poligonal: pysections (sections.py)
-# Normas: NSR-10 Título C / ACI 318 / Teoría de Rankine
 # =========================================================================================
 
 import os
