@@ -1,6 +1,5 @@
 
-# Cantilever Retaining Wall Design & Stability Analysis Repository
-**Repositorito de Diseño-y-Evaluación-Integral-de-Muros-de-Contención-en-Voladizo**
+# **Repositorito de Diseño y Evaluación Integral de Muros de Contención en Voladizo**
 
 ---
 
