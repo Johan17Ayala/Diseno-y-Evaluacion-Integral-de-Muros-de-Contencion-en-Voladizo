@@ -147,49 +147,47 @@ Para analizar un muro, abre `diseno_muro.py` con cualquier editor (ej: `nano dis
 #                       PANEL DE ENTRADA DE DATOS
 # =========================================================================
 # 1. Geometría del Muro (metros)
-H           = 5.00    # Altura total (m)
-B           = 3.20    # Ancho zapata (m)
-b_toe       = 0.80    # Puntera (m)
-h_f         = 0.50    # Espesor zapata (m)
-b_stem_base = 0.50    # Espesor base vástago (m)
-b_stem_top  = 0.30    # Espesor corona (m)
-gamma_c     = 24.0    # Peso específico concreto (kN/m³)
-
-# Dentellón (opcional si falla al deslizamiento)
-key_depth   = 0.0     # Profundidad (m)
-key_width   = 0.0     # Ancho (m)
-key_pos     = 0.0     # Posición desde la puntera (m)
-
+H           = 5.00    # [m] Altura total del muro (desde fondo zapata hasta corona)
+B           = 3.20    # [m] Ancho total de la zapata (base)
+b_toe       = 0.80    # [m] Longitud de la puntera (pie delantero)
+h_f         = 0.50    # [m] Espesor de la zapata
+b_stem_base = 0.50    # [m] Espesor del vástago en la base
+b_stem_top  = 0.30    # [m] Espesor de la corona superior
+gamma_c     = 24.0    # [kN/m³] Peso específico del concreto
+# Inclinación frontal y dentellón (opcionales)
+front_batter = 0.0    # [m] Desfase cara frontal (0.0 = vertical)
+key_depth    = 0.0    # [m] Profundidad dentellón (ej: 0.35 si falla deslizamiento)
+key_width    = 0.0    # [m] Ancho del dentellón (ej: 0.40)
+key_pos      = 0.0    # [m] Distancia desde la puntera (ej: 1.20)
 # 2. Suelo de Relleno y Sobrecarga
-gamma_s     = 18.5    # Peso unitario relleno (kN/m³)
-phi_s       = 32.0    # Ángulo fricción relleno (grados)
-c_s         = 0.0     # Cohesión relleno (kPa)
-q_surcharge = 15.0    # Sobrecarga de tránsito (kPa)
-beta_deg    = 0.0     # Inclinación del talud (grados)
-
-# 3. Suelo de Fundación
-q_adm       = 220.0   # Capacidad portante admisible (kPa)
-phi_f       = 30.0    # Fricción suelo de apoyo (grados)
-c_f         = 10.0    # Cohesión suelo de apoyo (kPa)
-gamma_f     = 19.0    # Peso unitario bajo la zapata (kN/m³)
-
+gamma_s     = 18.5    # [kN/m³] Peso unitario del relleno
+phi_s       = 32.0    # [grados] Ángulo de fricción interna del relleno
+c_s         = 0.0     # [kPa] Cohesión del relleno (0.0 para granular)
+q_surcharge = 15.0    # [kPa] Sobrecarga uniforme de tránsito
+beta_deg    = 0.0     # [grados] Inclinación del talud del terreno
+# 3. Suelo de Fundación (Apoyo bajo la zapata)
+q_adm       = 220.0   # [kPa] Capacidad portante admisible del terreno
+phi_f       = 30.0    # [grados] Fricción del suelo de fundación
+c_f         = 10.0    # [kPa] Cohesión del suelo bajo la zapata
+gamma_f     = 19.0    # [kN/m³] Peso unitario bajo la zapata
 # 4. Materiales Estructurales (NSR-10 / ACI 318)
-fc          = 21.0    # f'c concreto (MPa)
-fy          = 420.0   # fy acero (MPa)
-cover       = 0.05    # Recubrimiento (m)
+fc          = 21.0    # [MPa] Resistencia f'c del concreto (21 MPa ≈ 210 kg/cm²)
+fy          = 420.0   # [MPa] Límite de fluencia del acero (Grado 60)
+cover       = 0.05    # [m] Recubrimiento libre de concreto (5 cm)
+# 5. Configuración de salida
+archivo_imagen = "resultado_muro.png"
 ```
-
 ### Ejecución en Terminal:
+Una vez guardados los datos, ejecuta el archivo directamente:
 ```bash
 python3 diseno_muro.py
 ```
-
 ### Salida en Consola:
 ```text
 ===========================================================================
     EVALUACIÓN DE ESTABILIDAD GEOTÉCNICA Y ESTRUCTURAL DE MURO
+                 Universidad Distrital Francisco José de Caldas
 ===========================================================================
-
 --- GEOMETRIA ---
   H (m)                                     :      5.000
   B (m)                                     :      3.200
@@ -199,14 +197,12 @@ python3 diseno_muro.py
   Vástago base b_stem_base (m)              :      0.500
   Vástago corona b_stem_top (m)             :      0.300
   Dentellón (Prof x Ancho) (m)              :        0.00 x 0.00
-
 --- ESTABILIDAD GEOTÉCNICA ---
   FS Volcamiento (FS_v)                     :      3.060 -> APROBADO (OK)
   FS Deslizamiento (FS_d)                   :      1.308 -> NO CUMPLE (FALLA)
   Punto Aplicación Resultante x_R (m)       :      1.297
   Excentricidad e (m)                       :      0.303 (B/6 = 0.533 m) -> APROBADO (OK)
   Presión Máxima q_max (kPa)                :    136.996 (q_adm = 220 kPa) -> APROBADO (OK)
-
 --- DISEÑO ESTRUCTURAL DEL VÁSTAGO (NSR-10 / ACI 318) ---
   Cortante Último Vu (kN/m)                 :     125.27
   Capacidad Cortante phi*Vc (kN/m)          :     258.25 -> CUMPLE (Vu <= phi*Vc)
@@ -220,7 +216,6 @@ python3 diseno_muro.py
      -> #7 (7/8") @ 29 cm
 ===========================================================================
 ```
-
 ### Para visualizar el plano gráfico en Ubuntu:
 ```bash
 xdg-open resultado_muro.png
