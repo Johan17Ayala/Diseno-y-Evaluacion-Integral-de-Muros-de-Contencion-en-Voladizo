@@ -136,7 +136,6 @@ pip install numpy matplotlib
 Descarga el script de diseño y evaluación dentro de la misma carpeta donde reside `sections.py`:
 ```bash
 wget https://raw.githubusercontent.com/Johan17Ayala/Diseno-y-Evaluacion-Integral-de-Muros-de-Contencion-en-Voladizo/main/diseno_muro.py
-
 ---
 
 ## 6. Usage: Basic Example (`diseno_muro.py`)
